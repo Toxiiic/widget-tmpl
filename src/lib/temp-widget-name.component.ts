@@ -2,12 +2,11 @@ import { Component, OnInit, ViewChild, Input, ViewContainerRef, ElementRef, Rend
 
 import "echarts";
 import * as echarts from 'echarts';
-// declare var echarts1;
 import { Widget, WidgetBase } from '@toxiic/widget-devkit';
 
-@Widget({name:"echarts"})
+@Widget({name:"temp-widget-name"})
 @Component({
-  selector: 'widget-echarts',
+  selector: 'temp-widget-name',
   template: `
   <div class="d-flex flex-column h-100">
     <lib-widget-title-bar
@@ -20,7 +19,7 @@ import { Widget, WidgetBase } from '@toxiic/widget-devkit';
   `,
   styles: []
 })
-export class WidgetEchartsComponent extends WidgetBase {
+export class TempWidgetNameComponent extends WidgetBase {
   @Input() mainColor: string = "#2AC6C6"
 
   chartInstance: echarts.ECharts;

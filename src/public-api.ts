@@ -1,7 +1,7 @@
 /*
- * Public API Surface of widget-echarts
+ * Public API Surface of temp-widget-name
  */
 
-export * from './lib/widget-echarts.service';
-export * from './lib/widget-echarts.component';
-export * from './lib/widget-echarts.module';
+export * from './lib/temp-widget-name.service';
+export * from './lib/temp-widget-name.component';
+export * from './lib/temp-widget-name.module';

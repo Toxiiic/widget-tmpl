@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WidgetEchartsComponent } from './widget-echarts.component';
+import { TempWidgetNameComponent } from './temp-widget-name.component';
 
-describe('WidgetEchartsComponent', () => {
-  let component: WidgetEchartsComponent;
-  let fixture: ComponentFixture<WidgetEchartsComponent>;
+describe('TempWidgetNameComponent', () => {
+  let component: TempWidgetNameComponent;
+  let fixture: ComponentFixture<TempWidgetNameComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WidgetEchartsComponent ]
+      declarations: [ TempWidgetNameComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WidgetEchartsComponent);
+    fixture = TestBed.createComponent(TempWidgetNameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
