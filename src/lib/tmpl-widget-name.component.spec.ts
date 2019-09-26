@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TempWidgetNameComponent } from './temp-widget-name.component';
+import { TmplWidgetNameComponent } from './tmpl-widget-name.component';
 
-describe('TempWidgetNameComponent', () => {
-  let component: TempWidgetNameComponent;
-  let fixture: ComponentFixture<TempWidgetNameComponent>;
+describe('TmplWidgetNameComponent', () => {
+  let component: TmplWidgetNameComponent;
+  let fixture: ComponentFixture<TmplWidgetNameComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TempWidgetNameComponent ]
+      declarations: [ TmplWidgetNameComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TempWidgetNameComponent);
+    fixture = TestBed.createComponent(TmplWidgetNameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

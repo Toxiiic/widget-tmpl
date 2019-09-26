@@ -4,9 +4,9 @@ import "echarts";
 import * as echarts from 'echarts';
 import { Widget, WidgetBase } from '@toxiic/widget-devkit';
 
-@Widget({name:"temp-widget-name"})
+@Widget({name:"tmpl-widget-name"})
 @Component({
-  selector: 'temp-widget-name',
+  selector: 'tmpl-widget-name',
   template: `
   <div class="d-flex flex-column h-100">
     <lib-widget-title-bar
@@ -19,7 +19,7 @@ import { Widget, WidgetBase } from '@toxiic/widget-devkit';
   `,
   styles: []
 })
-export class TempWidgetNameComponent extends WidgetBase {
+export class TmplWidgetNameComponent extends WidgetBase {
   @Input() mainColor: string = "#2AC6C6"
 
   chartInstance: echarts.ECharts;
