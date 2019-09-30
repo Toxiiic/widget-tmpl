@@ -1,0 +1,23 @@
+{
+	"name": "tmpl-widget-name",
+    "displayName": "",
+    "moduleName": "TmplWidgetNameModule",
+    "desc": "",
+    "version": "0.0.1",
+    "paths": {
+        "main": "./main.js", 
+        "logo": "./logo.png",
+        "preview": "./preview.png",
+        "assets": "./assets"
+    },
+    "layout": {
+        "grid": {
+            "minCols": 0,
+            "minRows": 0,
+            "maxCols": 24,
+            "maxRows": 24
+        },
+        "other": {
+        }
+    }
+}
