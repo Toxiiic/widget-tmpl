@@ -12,6 +12,8 @@
     },
     "layout": {
         "grid": {
+            "cols": 4,
+            "rows": 4,
             "minCols": 0,
             "minRows": 0,
             "maxCols": 24,
