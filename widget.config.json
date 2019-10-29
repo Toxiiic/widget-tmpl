@@ -1,7 +1,6 @@
 {
 	"name": "tmpl-widget-name",
     "displayName": "",
-    "moduleName": "TmplWidgetNameModule",
     "desc": "",
     "version": "0.0.1",
     "paths": {

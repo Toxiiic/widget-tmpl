@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input, ViewContainerRef, ElementRef, Rend
 
 import "echarts";
 import * as echarts from 'echarts';
-import { Widget, WidgetBase } from '@toxiic/widget-devkit';
+import { Widget, WidgetBase } from '@gspwidget/widget-devkit';
 
 @Widget({name:"tmpl-widget-name"})
 @Component({
