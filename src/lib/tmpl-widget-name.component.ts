@@ -59,7 +59,7 @@ export class TmplWidgetNameComponent extends WidgetBase {@Property({
 
 
   chartInstance: echarts.ECharts;
-  data: []
+  data: any[]
   @ViewChild("chart") chartContainer:ElementRef;
   
   constructor() {
@@ -131,12 +131,7 @@ export class TmplWidgetNameComponent extends WidgetBase {@Property({
           symbol: 'circle',
           symbolSize: 1,
           areaStyle: {
-            color: this.showArea ? new echarts.graphic.LinearGradient(
-              0, 0, 0, 1, [
-                {offset: 0, color: `${yField.color}7a`},
-                {offset: 1, color: `${yField.color}00`}
-              ]
-            ): 'none'
+            color: 'none'
           },
           lineStyle: {
             color: yField.color,
