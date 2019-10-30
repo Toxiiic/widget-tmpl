@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import "echarts";
 import * as echarts from 'echarts';
 import { Widget, WidgetBase, Property, PropertyTypes } from '@gspwidget/widget-devkit';
+import { propertyOptions, EchartsOptions } from '../../../../projects/common/util'; // TODO: 待更新
 
 @Widget({name:"tmpl-widget-name"})
 @Component({
@@ -18,71 +19,44 @@ import { Widget, WidgetBase, Property, PropertyTypes } from '@gspwidget/widget-d
   `,
   styles: []
 })
-export class TmplWidgetNameComponent extends WidgetBase {
-  @Property({
-    type: PropertyTypes.Bool,
-    displayName: '平滑',
-    category: '样式'
-  }) smooth: boolean = false
+export class TmplWidgetNameComponent extends WidgetBase {@Property({
+  type: PropertyTypes.Bool,
+  displayName: '平滑',
+  category: '样式'
+}) smooth: boolean = false
 
-  @Property({
-    type: PropertyTypes.Bool,
-    displayName: '填充区域',
-    category: '样式',
-    boolOption: {
-      default: true
-    }
-  }) showArea: boolean = true
+@Property({
+  category: '数据',
+  displayName: 'X轴',
+}) xField: string = 'month'
 
-  @Property({
-    type: PropertyTypes.Enum,
-    displayName: '图例种类',
-    category: '样式',
-    enumOption: {
-      default: 'scroll',
-      items: [
-        { value: 'none', displayName: '不显示' },
-        { value: 'plain', displayName: '显示全部' },
-        { value: 'scroll', displayName: '超出部分滚动' }
-      ]
-    }
-  }) legendStyle: string = "scroll"
+@Property({
+  type: PropertyTypes.Object,
+  isArray: true,
+  displayName: 'Y轴',
+  objectOption: {
+    default: [], // TODO: 默认值没有限制是否是数组
+    objPropertyOptions: [{
+      name: 'valueField',
+      type: PropertyTypes.Text
+    }, {
+      name: 'color',
+      type: PropertyTypes.Color
+    }]
+  },
+  category: '数据'
+}) yFieldObjs: { valueField: string, color: string }[] = [{
+  valueField: 'totalSale', color: '#1f9cfe'
+}, {
+  valueField: 'lastYear', color: '#ff7ccd'
+}]
 
-  @Property({
-    category: '内容'
-  }) tooltipPrefix: string = ""
+@Property(propertyOptions.legendStyleOption) legendStyle: string = "scroll"
+// 全局跳转三件套
+@Property(propertyOptions.jumpType) jumpType: string = '0'
+@Property(propertyOptions.jumpFuncId) jumpFuncId: string = ''
+@Property(propertyOptions.jumpParams) jumpParams: any[] = [{ name: 'a', value: 'aa'}]
 
-  @Property({
-    category: '内容'
-  }) tooltipSuffix: string = ""
-
-  @Property({
-    category: '数据',
-    displayName: 'X轴',
-  }) xField: string = 'month'
-
-  @Property({
-    type: PropertyTypes.Object,
-    isArray: true,
-    displayName: 'Y轴',
-    objectOption: {
-      default: [], // TODO: 默认值没有限制是否是数组
-      objPropertyOptions: [{
-        name: 'valueField',
-        type: PropertyTypes.Text
-      }, {
-        name: 'color',
-        type: PropertyTypes.Color
-      }]
-    },
-    category: '数据'
-  }) yFieldObjs: { valueField: string, color: string }[] = [{
-    valueField: 'totalSale', color: '#1f9cfe'
-  }, {
-    valueField: 'lastYear', color: '#ff7ccd'
-  }]
-
-  // TODO: 联查全局
 
   chartInstance: echarts.ECharts;
   data: []
@@ -102,11 +76,6 @@ export class TmplWidgetNameComponent extends WidgetBase {
   onResized(){
     this.chartInstance.resize();
   }
-  /**
-   * 如果有数据配置信息，WidgetBase 在构造函数中就开始数据加载。
-   * 所以 onGetData() 的初始调用与 ngOnInit() 的调用先后顺序不确定，
-   * 所以对于依赖”这两个函数都调用过“的方法（比如 render()），应该在两个函数中都调用一次。
-   */
   onGetData (data) {
     console.log('on get data!!', data)
     this.data = data
