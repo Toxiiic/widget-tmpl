@@ -1,8 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import "echarts";
 import * as echarts from 'echarts';
-import { Widget, WidgetBase, Property, PropertyTypes } from '@gspwidget/widget-devkit';
-import { propertyOptions, EchartsOptions } from '../../../../projects/common/util'; // TODO: 待更新
+import { Widget, WidgetBase, Property, PropertyTypes, CommonPropertyOptions, EchartsOptions } from '@gspwidget/widget-devkit';
 
 @Widget({name:"tmpl-widget-name"})
 @Component({
@@ -11,7 +10,6 @@ import { propertyOptions, EchartsOptions } from '../../../../projects/common/uti
   <div class="d-flex flex-column h-100">
     <lib-widget-title-bar
       [title]="title"
-      [showMore]="false"
       ></lib-widget-title-bar>
     <div id="main" class="flex-fill" #chart>
     </div>
@@ -19,43 +17,41 @@ import { propertyOptions, EchartsOptions } from '../../../../projects/common/uti
   `,
   styles: []
 })
-export class TmplWidgetNameComponent extends WidgetBase {@Property({
-  type: PropertyTypes.Bool,
-  displayName: '平滑',
-  category: '样式'
-}) smooth: boolean = false
+export class TmplWidgetNameComponent extends WidgetBase {
+  @Property({
+    type: PropertyTypes.Bool,
+    displayName: '平滑',
+    category: '样式'
+  }) smooth: boolean = false
 
-@Property({
-  category: '数据',
-  displayName: 'X轴',
-}) xField: string = 'month'
+  @Property({
+    category: '数据',
+    displayName: 'X轴',
+  }) xField: string = 'month'
 
-@Property({
-  type: PropertyTypes.Object,
-  isArray: true,
-  displayName: 'Y轴',
-  objectOption: {
-    default: [], // TODO: 默认值没有限制是否是数组
-    objPropertyOptions: [{
-      name: 'valueField',
-      type: PropertyTypes.Text
-    }, {
-      name: 'color',
-      type: PropertyTypes.Color
-    }]
-  },
-  category: '数据'
-}) yFieldObjs: { valueField: string, color: string }[] = [{
-  valueField: 'totalSale', color: '#1f9cfe'
-}, {
-  valueField: 'lastYear', color: '#ff7ccd'
-}]
+  @Property({
+    type: PropertyTypes.Object,
+    isArray: true,
+    displayName: 'Y轴',
+    objectOption: {
+      default: [], // TODO: 默认值没有限制是否是数组
+      objPropertyOptions: [{
+        name: 'valueField',
+        type: PropertyTypes.Text
+      }, {
+        name: 'color',
+        type: PropertyTypes.Color
+      }]
+    },
+    category: '数据'
+  }) yFieldObjs: { valueField: string, color: string }[] = [{
+    valueField: 'totalSale', color: '#1f9cfe'
+  }, {
+    valueField: 'lastYear', color: '#ff7ccd'
+  }]
 
-@Property(propertyOptions.legendStyleOption) legendStyle: string = "scroll"
-// 全局跳转三件套
-@Property(propertyOptions.jumpType) jumpType: string = '0'
-@Property(propertyOptions.jumpFuncId) jumpFuncId: string = ''
-@Property(propertyOptions.jumpParams) jumpParams: any[] = [{ name: 'a', value: 'aa'}]
+  // 全局跳转
+  @Property(CommonPropertyOptions.jump) jumpProperty
 
 
   chartInstance: echarts.ECharts;
@@ -95,8 +91,8 @@ export class TmplWidgetNameComponent extends WidgetBase {@Property({
         source: this.data
       },
       legend: {
-        show: this.legendStyle != 'none',
-        type: this.legendStyle == 'none' ? '': this.legendStyle
+        show: true,
+        type: 'scroll'
       },
       xAxis: {
         type: 'category',
