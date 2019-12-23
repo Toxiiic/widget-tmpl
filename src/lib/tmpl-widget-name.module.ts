@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { TmplWidgetNameComponent } from './tmpl-widget-name.component';
 import { WidgetTitleBarModule } from '@gspwidget/widget-devkit';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [TmplWidgetNameComponent],
   imports: [
-    WidgetTitleBarModule
+    WidgetTitleBarModule,
+    CommonModule
   ],
   exports: [TmplWidgetNameComponent]
 })
