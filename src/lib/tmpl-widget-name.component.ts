@@ -86,6 +86,7 @@ export class TmplWidgetNameComponent extends WidgetBase {
   onPropertyChange (propName, value) {
     // 若 dimensions 中过有空串，echarts 从此之后会一直报错不听使唤
     if(propName === 'yFieldObjs') this.yFieldObjs = this.yFieldObjs.filter(c=>!!c.valueField)
+    this.render()
   }
 
   render () {
